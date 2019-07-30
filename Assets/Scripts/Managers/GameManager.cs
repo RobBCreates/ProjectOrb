@@ -11,7 +11,12 @@ public class GameManager : MonoBehaviour
     }
 
     private int levelCollectableCount;
+    private float startTime;
+    private float levelTime;
+
+    [HideInInspector]
     public bool isPlaying = false; 
+
 
     private void Awake()
     {
@@ -37,15 +42,27 @@ public class GameManager : MonoBehaviour
         levelCollectableCount--;
         if(levelCollectableCount == 0)
         {
-            // Level over
-            
+            isPlaying = false;
+             levelTime = Time.time - startTime;
+            // Level over - Success
+            GameCanvasManager.Instance.ShowLevelOver(levelTime);
         }
     }
 
     public void StartPlay()
     {
+        startTime = Time.time;
         isPlaying = true;
 
     }
 
+    public void PlayerDied()
+    {
+        // Level over - Failed
+        if(!isPlaying)
+        return;
+
+        isPlaying = false;
+        GameCanvasManager.Instance.ShowLevelOver(0);
+    }
 }

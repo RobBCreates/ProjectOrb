@@ -21,8 +21,7 @@ public class PlayerCollision : MonoBehaviour
         PlayEffect();
         PlaySound();
 
-        // TODO - Call GameManager 
-
+        GameManager.Instance.PlayerDied();
         Destroy(gameObject);
 
     }
