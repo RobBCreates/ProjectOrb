@@ -7,6 +7,8 @@ public class Collectable : MonoBehaviour
     
     [SerializeField]
     private AudioClip collectSound;
+    [SerializeField]
+    private GameObject explosion;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -27,7 +29,9 @@ public class Collectable : MonoBehaviour
 
     void PlayEffect()
     {
-        // TODO
+        Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
+        Handheld.Vibrate();
+
     }
 
     void PlaySound()

@@ -7,6 +7,8 @@ public class PlayerCollision : MonoBehaviour
 
     [SerializeField]
     private AudioClip hitSound;
+    [SerializeField]
+    private GameObject explosion;
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -32,6 +34,7 @@ public class PlayerCollision : MonoBehaviour
 
     void PlayEffect()
     {
-
+        Handheld.Vibrate();
+        Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
     }
 }

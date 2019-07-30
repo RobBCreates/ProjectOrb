@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectSound: {fileID: 8300000, guid: ccdbf07366c00b5409b6c572536ec7d1, type: 3}
+  explosion: {fileID: 183380, guid: de1265926a304314cb95f8e34049e7e7, type: 3}
 --- !u!212 &8463787604632629420
 SpriteRenderer:
   m_ObjectHideFlags: 0

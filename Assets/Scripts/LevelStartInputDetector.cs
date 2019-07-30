@@ -43,8 +43,6 @@ public class LevelStartInputDetector : MonoBehaviour
                 rightArrow.color = selectedColour;
                 startDir = 1;
             }
-            Debug.Log("Touch Position: " + Input.mousePosition.x);
-            Debug.Log("Ray: " + hit.point);
         }
     }
 
