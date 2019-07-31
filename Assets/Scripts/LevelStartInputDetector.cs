@@ -35,13 +35,13 @@ public class LevelStartInputDetector : MonoBehaviour
             {
                 leftArrow.color = selectedColour;
                 rightArrow.color = deselectedColour;
-                startDir = -1;
+                startDir = 1;
             }
             else
             {
                 leftArrow.color = deselectedColour;
                 rightArrow.color = selectedColour;
-                startDir = 1;
+                startDir = -1;
             }
         }
     }

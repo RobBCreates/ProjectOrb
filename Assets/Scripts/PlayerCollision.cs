@@ -33,7 +33,7 @@ public class PlayerCollision : MonoBehaviour
 
     void PlayEffect()
     {
-        Handheld.Vibrate();
+        GameManager.Instance.PlayVibrate();
         Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
     }
 }

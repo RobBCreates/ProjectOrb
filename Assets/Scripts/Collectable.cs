@@ -30,7 +30,8 @@ public class Collectable : MonoBehaviour
     void PlayEffect()
     {
         Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
-        Handheld.Vibrate();
+        GameManager.Instance.PlayVibrate();
+        
 
     }
 

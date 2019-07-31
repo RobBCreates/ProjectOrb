@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-   private static GameManager _instance; 
-   public static GameManager Instance
+    private static GameManager _instance;
+    public static GameManager Instance
     {
-        get {return _instance;}
+        get { return _instance; }
     }
 
     private int levelCollectableCount;
@@ -15,12 +15,12 @@ public class GameManager : MonoBehaviour
     private float levelTime;
 
     [HideInInspector]
-    public bool isPlaying = false; 
+    public bool isPlaying = false;
 
 
     private void Awake()
     {
-        if(!_instance)
+        if (!_instance)
         {
             _instance = this;
         }
@@ -34,16 +34,16 @@ public class GameManager : MonoBehaviour
 
     void Initialise()
     {
-        levelCollectableCount = FindObjectsOfType(typeof(Collectable)).Length;
+        //levelCollectableCount = FindObjectsOfType(typeof(Collectable)).Length;
     }
 
     public void CollectableDestroyed()
     {
         levelCollectableCount--;
-        if(levelCollectableCount == 0)
+        if (levelCollectableCount == 0)
         {
             isPlaying = false;
-             levelTime = Time.time - startTime;
+            levelTime = Time.time - startTime;
             // Level over - Success
             GameCanvasManager.Instance.ShowLevelOver(levelTime);
         }
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void StartPlay()
     {
+        levelCollectableCount = FindObjectsOfType(typeof(Collectable)).Length;
         startTime = Time.time;
         isPlaying = true;
 
@@ -59,10 +60,25 @@ public class GameManager : MonoBehaviour
     public void PlayerDied()
     {
         // Level over - Failed
-        if(!isPlaying)
-        return;
+        if (!isPlaying)
+            return;
 
         isPlaying = false;
         GameCanvasManager.Instance.ShowLevelOver(0);
     }
+
+    public void PlayVibrate()
+    {
+        if (!PersistentManager.Instance)
+        {
+            Debug.LogWarning("PersistentManager needed!");
+            return;
+        }
+
+        if (PersistentManager.Instance.GetVibrate())
+        {
+            Handheld.Vibrate();
+        }
+    }
+
 }

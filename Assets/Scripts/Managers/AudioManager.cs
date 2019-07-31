@@ -32,8 +32,18 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        audioSource.clip = clip;
-        audioSource.Play();
+        if (!PersistentManager.Instance)
+        {
+            Debug.LogWarning("Persistent Manager Needed");
+            return;
+        }
+
+        if (PersistentManager.Instance.GetPlaySound())
+        {
+            audioSource.clip = clip;
+            audioSource.Play();
+        }
+
     }
 
 }

@@ -25,6 +25,17 @@ public class PlayerMovement : MonoBehaviour
     public void SetStartDirection(int startDir)
     {
         startDirection = startDir;
+
+
+        if(startDir == 1)
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0,0,90);
+        }
+        else
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0,0,-90);
+        }
+
     }
 
     // Update is called once per frame
