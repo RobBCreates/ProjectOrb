@@ -15,7 +15,7 @@ public class LineRenderCircle : MonoBehaviour
 
     private void Awake()
     {
-        lineRenderer = GetComponent<LineRenderer>();
+        
         SetupCircle();
     }
 
@@ -42,8 +42,9 @@ public class LineRenderCircle : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    private void OnDrawGizmos() 
+    private void OnDrawGizmosSelected() 
     {
+            lineRenderer = GetComponent<LineRenderer>();
          lineRenderer.widthMultiplier = lineWidth;
 
         float deltaTheta = (2f * Mathf.PI) / vertCount;
