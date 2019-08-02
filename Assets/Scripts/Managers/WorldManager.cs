@@ -8,16 +8,17 @@ using System.IO;
 public class WorldManager : SerializedMonoBehaviour
 {
     
-    private enum WorldEnum { One, Two, Three };
-    
-    [SerializeField]
-    private WorldEnum currentWorld;
+    //private enum WorldEnum { One, Two, Three };
+    //[SerializeField]
+    //private WorldEnum currentWorld;
     
     [SerializeField]
     private string m_InputFile;
 
     [TableList]
     public List<Dictionary<string,object>> csvPoints;
+
+    private int currentWorld;
 
     
 
@@ -26,6 +27,14 @@ public class WorldManager : SerializedMonoBehaviour
     /// </summary>
     void Awake()
     {
+        if(PersistentManager.Instance)
+        {
+            currentWorld = PersistentManager.Instance.GetCurrentWorld();
+        }
+        else
+        {
+            Debug.LogWarning("Persistent Manager needed in ALL Levels");
+        }
         csvPoints = CSVReader.Read(m_InputFile);
         
     }
@@ -42,13 +51,13 @@ public class WorldManager : SerializedMonoBehaviour
             {
                 case "Floor":
                     Color tempFloorCol;
-                    hexString = csvPoints[(int)currentWorld]["Floor"].ToString();
+                    hexString = csvPoints[currentWorld]["Floor"].ToString();
                     if(ColorUtility.TryParseHtmlString(hexString, out tempFloorCol))
                     map.color = tempFloorCol;
                     break;
                 case "Wall":
                     Color tempWallColour;
-                    hexString = csvPoints[(int)currentWorld]["Wall"].ToString();
+                    hexString = csvPoints[currentWorld]["Wall"].ToString();
                     if(ColorUtility.TryParseHtmlString(hexString, out tempWallColour))
                     map.color = tempWallColour;
                     break;

@@ -34,6 +34,11 @@ public class GameCanvasManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
    }
 
+   public void ButtonPressedMainMenu()
+   {
+      SceneManager.LoadScene("Menu");
+   }
+
    public void ShowLevelOver(float playTime)
    {
       // Player completed level with tracked time

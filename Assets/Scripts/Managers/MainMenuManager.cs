@@ -7,9 +7,10 @@ public class MainMenuManager : MonoBehaviour
 {
     [SerializeField]
     GameObject infoText;
-
     [SerializeField]
     GameObject settingsCanvas;
+    [SerializeField]
+    GameObject levelButtonsCanvas;
 
     private bool bPlaySound = true;
     private bool bPlayVibrate = true;
@@ -23,9 +24,18 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    private void HideAllCanvas()
+    {
+        levelButtonsCanvas.SetActive(false);
+        infoText.SetActive(false);
+        settingsCanvas.SetActive(false);
+    }
+
     public void ButtonPlayPressed()
     {
-        SceneManager.LoadScene("Main");
+        HideAllCanvas();
+        levelButtonsCanvas.SetActive(true);
+        
     }
 
     public void ButtonInfoPressed()
@@ -62,4 +72,18 @@ public class MainMenuManager : MonoBehaviour
             Debug.LogWarning("PersistentManagerNeeded");
         }
     }
+
+    public void SetWorld(int world)
+    {
+        if (PersistentManager.Instance)
+        {
+            PersistentManager.Instance.SetWorld(world);
+            SceneManager.LoadScene("Main");
+        }
+        else
+        {
+            Debug.LogWarning("PersistentManagerNeeded");
+        }
+    }
+
 }

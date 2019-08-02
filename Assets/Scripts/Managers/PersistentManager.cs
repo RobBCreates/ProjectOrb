@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class PersistentManager : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class PersistentManager : MonoBehaviour
 
     private bool bPlaySound;
     private bool bVibrate;
+    private int currentWorld;
+
+    public List<string> scenes = new List<string>();
 
     private void Awake()
     {
@@ -24,7 +28,17 @@ public class PersistentManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        foreach(EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        {
+            if(scene.enabled)
+            {
+                scenes.Add(scene.name);
+            }
+        }
+
         DontDestroyOnLoad(gameObject);
+
+
     }
 
     public void SetPlaySound(bool newPlaySound)
@@ -45,6 +59,18 @@ public class PersistentManager : MonoBehaviour
     public bool GetVibrate()
     {
         return bVibrate;
+    }
+
+    public void SetWorld(int world)
+    {
+        currentWorld = world;
+    }
+
+    public int GetCurrentWorld()
+    {
+        // - 1 here so we can input the world we want to display to player and make 
+        // it easier for designers to enter obvious values. 
+        return currentWorld - 1;
     }
 
  
