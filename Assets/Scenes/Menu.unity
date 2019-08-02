@@ -413,7 +413,7 @@ GameObject:
   - component: {fileID: 358398120}
   - component: {fileID: 358398119}
   m_Layer: 5
-  m_Name: ButtonWorld3
+  m_Name: W3L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,6 +561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36fec658ed13004fa53e61b13dd7cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenes: []
 --- !u!4 &410217870
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,7 +1091,7 @@ GameObject:
   - component: {fileID: 848733354}
   - component: {fileID: 848733353}
   m_Layer: 5
-  m_Name: ButtonWorld2
+  m_Name: W2L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2107,7 +2108,7 @@ GameObject:
   - component: {fileID: 1616820767}
   - component: {fileID: 1616820766}
   m_Layer: 5
-  m_Name: ButtonWorld1
+  m_Name: W1L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

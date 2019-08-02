@@ -7,8 +7,9 @@ public class PersistentManager : MonoBehaviour
 {
 
     private static PersistentManager _instance;
-    public static PersistentManager Instance{
-        get {return _instance;}
+    public static PersistentManager Instance
+    {
+        get { return _instance; }
     }
 
     private bool bPlaySound;
@@ -19,7 +20,7 @@ public class PersistentManager : MonoBehaviour
 
     private void Awake()
     {
-        if(!_instance)
+        if (!_instance)
         {
             _instance = this;
         }
@@ -28,11 +29,15 @@ public class PersistentManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach(EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
         {
-            if(scene.enabled)
+            if (scene.enabled)
             {
-                scenes.Add(scene.name);
+                string name = scene.path.Substring(scene.path.LastIndexOf('/') + 1);
+                name = name.Substring(0, name.Length - 6);
+                scenes.Add(name);
+
+                //scenes.Add(scene.name);
             }
         }
 
@@ -73,5 +78,5 @@ public class PersistentManager : MonoBehaviour
         return currentWorld - 1;
     }
 
- 
+
 }
