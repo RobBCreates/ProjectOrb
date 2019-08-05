@@ -5,6 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+
+
+    private static MainMenuManager _instance;
+
+    public static MainMenuManager Instance
+    {
+        get { return _instance; }
+    }
+
     [SerializeField]
     GameObject infoText;
     [SerializeField]
@@ -17,7 +26,16 @@ public class MainMenuManager : MonoBehaviour
     
     private void Awake()
     {
-        if(PersistentManager.Instance)
+        if (!_instance)
+        {
+            _instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        if (PersistentManager.Instance)
         {
             PersistentManager.Instance.SetPlaySound(bPlaySound);
             PersistentManager.Instance.SetVibrate(bPlayVibrate);
@@ -79,6 +97,19 @@ public class MainMenuManager : MonoBehaviour
         {
             PersistentManager.Instance.SetWorld(world);
             SceneManager.LoadScene("Main");
+        }
+        else
+        {
+            Debug.LogWarning("PersistentManagerNeeded");
+        }
+    }
+
+    public void SetWorldAndLevel(string buttonName)
+    {
+        if (PersistentManager.Instance)
+        {
+            PersistentManager.Instance.SetWorldAndLevel(buttonName);
+            SceneManager.LoadScene(buttonName);
         }
         else
         {

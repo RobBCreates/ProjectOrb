@@ -14,9 +14,12 @@ public class PersistentManager : MonoBehaviour
 
     private bool bPlaySound;
     private bool bVibrate;
-    private int currentWorld;
+    public int currentWorld;
 
     public List<string> scenes = new List<string>();
+
+    public string TestName;
+    public char testChar;
 
     private void Awake()
     {
@@ -40,6 +43,7 @@ public class PersistentManager : MonoBehaviour
                 //scenes.Add(scene.name);
             }
         }
+
 
         DontDestroyOnLoad(gameObject);
 
@@ -69,6 +73,15 @@ public class PersistentManager : MonoBehaviour
     public void SetWorld(int world)
     {
         currentWorld = world;
+    }
+
+    public void SetWorldAndLevel(string selectedName)
+    {
+        string TestName = selectedName;
+
+        testChar = TestName[1];
+        currentWorld = int.Parse(testChar.ToString()); 
+          
     }
 
     public int GetCurrentWorld()

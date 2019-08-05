@@ -412,6 +412,7 @@ GameObject:
   - component: {fileID: 358398121}
   - component: {fileID: 358398120}
   - component: {fileID: 358398119}
+  - component: {fileID: 358398122}
   m_Layer: 5
   m_Name: W3L1
   m_TagString: Untagged
@@ -482,9 +483,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2128486710}
-        m_MethodName: SetWorld
-        m_Mode: 3
+      - m_Target: {fileID: 358398122}
+        m_MethodName: LevelButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -532,6 +533,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358398117}
   m_CullTransparentMesh: 0
+--- !u!114 &358398122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358398117}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d092711fa81033342a46fc761090ef03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &410217868
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,7 +574,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36fec658ed13004fa53e61b13dd7cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentWorld: 0
   scenes: []
+  TestName: 
+  testChar: 0
 --- !u!4 &410217870
 Transform:
   m_ObjectHideFlags: 0
@@ -1090,6 +1106,7 @@ GameObject:
   - component: {fileID: 848733355}
   - component: {fileID: 848733354}
   - component: {fileID: 848733353}
+  - component: {fileID: 848733356}
   m_Layer: 5
   m_Name: W2L1
   m_TagString: Untagged
@@ -1160,9 +1177,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2128486710}
-        m_MethodName: SetWorld
-        m_Mode: 3
+      - m_Target: {fileID: 848733356}
+        m_MethodName: LevelButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1210,6 +1227,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 848733351}
   m_CullTransparentMesh: 0
+--- !u!114 &848733356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848733351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d092711fa81033342a46fc761090ef03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1111277145
 GameObject:
   m_ObjectHideFlags: 0
@@ -2107,6 +2136,7 @@ GameObject:
   - component: {fileID: 1616820768}
   - component: {fileID: 1616820767}
   - component: {fileID: 1616820766}
+  - component: {fileID: 1616820769}
   m_Layer: 5
   m_Name: W1L1
   m_TagString: Untagged
@@ -2177,9 +2207,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2128486710}
-        m_MethodName: SetWorld
-        m_Mode: 3
+      - m_Target: {fileID: 1616820769}
+        m_MethodName: LevelButtonPressed
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2227,6 +2257,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616820764}
   m_CullTransparentMesh: 0
+--- !u!114 &1616820769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1616820764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d092711fa81033342a46fc761090ef03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1808004276
 GameObject:
   m_ObjectHideFlags: 0
