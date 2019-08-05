@@ -77,7 +77,9 @@ public class GameManager : MonoBehaviour
 
         if (PersistentManager.Instance.GetVibrate())
         {
+#if UNITY_ANDROID
             Handheld.Vibrate();
+#endif
         }
     }
 

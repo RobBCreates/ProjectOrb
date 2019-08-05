@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class PersistentManager : MonoBehaviour
 {
@@ -32,17 +33,29 @@ public class PersistentManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
-        {
-            if (scene.enabled)
-            {
-                string name = scene.path.Substring(scene.path.LastIndexOf('/') + 1);
-                name = name.Substring(0, name.Length - 6);
-                scenes.Add(name);
 
-                //scenes.Add(scene.name);
-            }
+        int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
+        //string[] scenes = new string[sceneCount];
+
+        for(int i = 0; i < sceneCount; i++)
+        {
+            scenes.Add(System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i)));
+
         }
+
+
+        // Doesn't work for BUILDS!! 
+        //foreach (EditorBuildSettingsScene scene in EditorBuildSettings.scenes)
+        //{
+        //    if (scene.enabled)
+        //    {
+        //        string name = scene.path.Substring(scene.path.LastIndexOf('/') + 1);
+        //        name = name.Substring(0, name.Length - 6);
+        //        scenes.Add(name);
+
+        //        //scenes.Add(scene.name);
+        //    }
+        //}
 
 
         DontDestroyOnLoad(gameObject);
