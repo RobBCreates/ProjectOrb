@@ -6,16 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class GameCanvasManager : MonoBehaviour
 {
-   
+    
 
-   private static GameCanvasManager _instance; 
-   public static GameCanvasManager Instance 
-   {
-      get {return _instance;}
-   }
+    private static GameCanvasManager _instance; 
+    public static GameCanvasManager Instance 
+    {
+        get {return _instance;}
+    }
 
-   [SerializeField]
-   Text endText = null; 
+    [SerializeField]
+    Text endText = null;
+
+    [SerializeField]
+    GameObject endPanelObject = null;
+
+    [SerializeField]
+    GameObject nextLevelButton = null;
 
    private void Awake()
    {
@@ -45,12 +51,16 @@ public class GameCanvasManager : MonoBehaviour
       if(playTime != 0)
       {
          endText.text = "Level Complete In: " + playTime.ToString("f2");
+            nextLevelButton.SetActive(true);
       }
       // Player lost, no play time required
       else
       {
          endText.text = "Level Failed";
+            nextLevelButton.SetActive(false);
       }
+
+        endPanelObject.SetActive(true);
    }
 
 }

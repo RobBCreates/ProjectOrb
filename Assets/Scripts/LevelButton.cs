@@ -1,10 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelButton : MonoBehaviour
 {
-    
+    [SerializeField]
+    private Text nameText = null;
+
+
+    private void Awake()
+    {
+        nameText.text = gameObject.transform.name;
+    }
 
 
     public void LevelButtonPressed(string buttonName)

@@ -1088,24 +1088,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1635260675702920263, guid: 60ebbfb299de29c44b74ec7d931de2dd,
-        type: 3}
-      propertyPath: endPanelObject
-      value: 
-      objectReference: {fileID: 791583493}
-    - target: {fileID: 6346490881308574929, guid: 60ebbfb299de29c44b74ec7d931de2dd,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60ebbfb299de29c44b74ec7d931de2dd, type: 3}
---- !u!1 &791583493 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6558591364227028025, guid: 60ebbfb299de29c44b74ec7d931de2dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 791583492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &889027601
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,6 +4906,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 488355683, guid: a6258c2a7c22d19498b061666dba1463, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 183380, guid: de1265926a304314cb95f8e34049e7e7, type: 3}
     - target: {fileID: 5183380006863389303, guid: a6258c2a7c22d19498b061666dba1463,
         type: 3}
       propertyPath: moveSpeed
@@ -4932,10 +4920,6 @@ PrefabInstance:
       propertyPath: rotationSpeed
       value: 200
       objectReference: {fileID: 0}
-    - target: {fileID: 488355683, guid: a6258c2a7c22d19498b061666dba1463, type: 3}
-      propertyPath: explosion
-      value: 
-      objectReference: {fileID: 183380, guid: de1265926a304314cb95f8e34049e7e7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a6258c2a7c22d19498b061666dba1463, type: 3}
 --- !u!1001 &6036287082896712630
