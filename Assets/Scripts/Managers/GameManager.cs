@@ -29,6 +29,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Initialise();
+    }
+
+    void Initialise()
+    {
+        //levelCollectableCount = FindObjectsOfType(typeof(Collectable)).Length;
     }
 
     public void CollectableDestroyed()
@@ -45,11 +51,7 @@ public class GameManager : MonoBehaviour
 
     public void StartPlay()
     {
-        // StartPlay called when player first taps the screen to launch the Orb. 
-
-        // Gett all collectables in the level to track the objective to hit before level completed.
         levelCollectableCount = FindObjectsOfType(typeof(Collectable)).Length;
-        // Track start time for use when displaying complete play time at the end.
         startTime = Time.time;
         isPlaying = true;
 
@@ -67,7 +69,6 @@ public class GameManager : MonoBehaviour
 
     public void PlayVibrate()
     {
-#if UNITY_ANDROID
         if (!PersistentManager.Instance)
         {
             Debug.LogWarning("PersistentManager needed!");
@@ -76,10 +77,10 @@ public class GameManager : MonoBehaviour
 
         if (PersistentManager.Instance.GetVibrate())
         {
-
+#if UNITY_ANDROID
             Handheld.Vibrate();
 #endif
+        }
     }
+
 }
-
-
