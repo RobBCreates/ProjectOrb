@@ -51,7 +51,16 @@ public class GameCanvasManager : MonoBehaviour
       if(playTime != 0)
       {
          endText.text = "Level Complete In: " + playTime.ToString("f2");
-            nextLevelButton.SetActive(true);
+
+            if(SceneManager.GetActiveScene().buildIndex < SceneManager.sceneCountInBuildSettings - 1)
+            {
+                nextLevelButton.SetActive(true);
+            }
+            else
+            {
+                nextLevelButton.SetActive(false);
+            }
+            
       }
       // Player lost, no play time required
       else
@@ -63,4 +72,13 @@ public class GameCanvasManager : MonoBehaviour
         endPanelObject.SetActive(true);
    }
 
+    public void PlayNextLevelPressed()
+    {
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+
+        PersistentManager.Instance.SetWorldAndLevel(PersistentManager.Instance.scenes[nextScene]);
+
+        SceneManager.LoadScene(nextScene);
+
+    }
 }

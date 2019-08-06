@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Skip move input if we're on main menu.
+        // Skip move input if we're on main menu.Just using player for visuals. s
         if(bMainMenuPlayer) 
         {
             transform.position += transform.up * Time.deltaTime * moveSpeed;
