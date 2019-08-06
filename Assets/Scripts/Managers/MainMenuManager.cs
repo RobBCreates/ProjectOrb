@@ -105,10 +105,21 @@ public class MainMenuManager : MonoBehaviour
         }
     }
 
+    public void SetWorld(int world)
+    {
+        if (PersistentManager.Instance)
+        {
+            PersistentManager.Instance.SetWorld(world);
+            SceneManager.LoadScene("Main");
+        }
+        else
+        {
+            Debug.LogWarning("PersistentManagerNeeded");
+        }
+    }
+
     public void SetWorldAndLevel(string buttonName)
     {
-        // Called from LevelButton when pressed and breaks the string name 
-        // down in the PersistentManager for use with the stored CSV colours. 
         if (PersistentManager.Instance)
         {
             PersistentManager.Instance.SetWorldAndLevel(buttonName);
