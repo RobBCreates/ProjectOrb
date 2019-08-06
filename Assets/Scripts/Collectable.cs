@@ -6,9 +6,9 @@ public class Collectable : MonoBehaviour
 {
     
     [SerializeField]
-    private AudioClip collectSound;
+    private AudioClip collectSound = null;
     [SerializeField]
-    private GameObject explosion;
+    private GameObject explosion = null;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
