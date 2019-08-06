@@ -7,11 +7,7 @@ using System.IO;
 
 public class WorldManager : SerializedMonoBehaviour
 {
-    
-    //private enum WorldEnum { One, Two, Three };
-    //[SerializeField]
-    //private WorldEnum currentWorld;
-    
+        
     [SerializeField]
     private string m_InputFile;
 
@@ -20,11 +16,6 @@ public class WorldManager : SerializedMonoBehaviour
 
     private int currentWorld;
 
-    
-
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
     void Awake()
     {
         if(PersistentManager.Instance)
@@ -42,11 +33,12 @@ public class WorldManager : SerializedMonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        // Get the tilemap in the level. 
         Tilemap[] gameObjects = Resources.FindObjectsOfTypeAll<Tilemap>();
         string hexString;
         foreach (Tilemap map in gameObjects)
         {
+            // Check for different parts of the tilemap and set the colours based on which part we've found. 
             switch (map.gameObject.name)
             {
                 case "Floor":

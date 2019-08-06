@@ -32,6 +32,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
+        // Sound player here from any actor that needs to play sound 
+        // in case we need to destroy said GameObjects.
+
         if (!PersistentManager.Instance)
         {
             Debug.LogWarning("Persistent Manager Needed");

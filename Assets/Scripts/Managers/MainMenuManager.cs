@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-
-
     private static MainMenuManager _instance;
 
     public static MainMenuManager Instance
@@ -37,6 +35,8 @@ public class MainMenuManager : MonoBehaviour
 
         if (PersistentManager.Instance)
         {
+            // Set player chosen settings through PersistentManager if it exists.
+            // Which it ALWAYS should. 
             PersistentManager.Instance.SetPlaySound(bPlaySound);
             PersistentManager.Instance.SetVibrate(bPlayVibrate);
         }
@@ -49,23 +49,34 @@ public class MainMenuManager : MonoBehaviour
         settingsCanvas.SetActive(false);
     }
 
+    private void ManageCanvasObject(GameObject canvasObject)
+    {
+        // Check current active state of the canvas related to the pressed
+        // button. Toggle if Active and always HideAllCanvas to avoid UI overlaps. 
+        if (canvasObject.activeSelf)
+        {
+            HideAllCanvas();
+        }
+        else
+        {
+            HideAllCanvas();
+            canvasObject.SetActive(true);
+        }
+    }
+
     public void ButtonPlayPressed()
     {
-        HideAllCanvas();
-        levelButtonsCanvas.SetActive(true);
-        
+        ManageCanvasObject(levelButtonsCanvas);
     }
 
     public void ButtonInfoPressed()
     {
-        infoText.SetActive(!infoText.activeSelf);
-        settingsCanvas.SetActive(false);
+        ManageCanvasObject(infoText);
     }
 
     public void ButtonSettingsPressed()
     {
-        settingsCanvas.SetActive(!settingsCanvas.activeSelf);
-        infoText.SetActive(false);
+        ManageCanvasObject(settingsCanvas);
     }
 
     public void ToggleSoundPressed(bool playSound)
