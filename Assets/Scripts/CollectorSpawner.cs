@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// --** This class is only really intended for in Editor use. It allows the user to spawn collectables around a circle. **--\\
+// --** The Radius in here should be roughly the player Rotation speed divided by the player speed. Then halved. This provides a circle that fits the complete arc of the player moving 
+// when nothing is pressed. So RotSpeed / MoveSpeed / 2 = Radius. **-- \\
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +16,7 @@ public class CollectorSpawner : MonoBehaviour
     private List<GameObject> lastSpawned = new List<GameObject>();
     public List<GameObject> allCollectables = new List<GameObject>();
 
+    // Editor visual stuff.
     public int vertCount = 40;
     public float lineWidth = 1f;
     private LineRenderer lineRenderer;
@@ -81,6 +86,8 @@ public class CollectorSpawner : MonoBehaviour
 
     private void Start()
     {
+        // Test implementation of spawning at random points around a circle in case this becomes useful. 
+
         // Vector3 center = transform.position;
         // for (int i = 0; i < numObjects; i++)
         // {

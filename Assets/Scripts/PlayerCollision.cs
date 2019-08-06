@@ -6,9 +6,9 @@ public class PlayerCollision : MonoBehaviour
 {
 
     [SerializeField]
-    private AudioClip hitSound;
+    private AudioClip hitSound = null;
     [SerializeField]
-    private GameObject explosion;
+    private GameObject explosion = null;
 
     private void OnCollisionEnter2D(Collision2D other)
     {

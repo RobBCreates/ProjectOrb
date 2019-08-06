@@ -13,11 +13,11 @@ public class MainMenuManager : MonoBehaviour
     }
 
     [SerializeField]
-    GameObject infoText;
+    GameObject infoText = null;
     [SerializeField]
-    GameObject settingsCanvas;
+    GameObject settingsCanvas = null;
     [SerializeField]
-    GameObject levelButtonsCanvas;
+    GameObject levelButtonsCanvas = null;
 
     private bool bPlaySound = true;
     private bool bPlayVibrate = true;

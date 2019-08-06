@@ -6,12 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField]
-    private bool bMainMenuPlayer;
+    private bool bMainMenuPlayer = false;
 
     [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed = 0;
     [SerializeField]
-    private float rotationSpeed;
+    private float rotationSpeed = 0;
 
     private int startDirection = 1;
     private int direction = -1;

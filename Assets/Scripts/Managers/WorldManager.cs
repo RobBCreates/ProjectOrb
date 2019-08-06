@@ -9,7 +9,7 @@ public class WorldManager : SerializedMonoBehaviour
 {
         
     [SerializeField]
-    private string m_InputFile;
+    private string m_InputFile = "WorldColours";
 
     [TableList]
     public List<Dictionary<string,object>> csvPoints;

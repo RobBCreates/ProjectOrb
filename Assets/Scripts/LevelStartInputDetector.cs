@@ -6,16 +6,16 @@ public class LevelStartInputDetector : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject arrowHolder;
+    private GameObject arrowHolder = null;
     [SerializeField]
-    private SpriteRenderer leftArrow;
+    private SpriteRenderer leftArrow = null;
     [SerializeField]
-    private SpriteRenderer rightArrow;
+    private SpriteRenderer rightArrow = null;
 
     [SerializeField]
-    private Color selectedColour;
+    private Color selectedColour = Color.white;
     [SerializeField]
-    private Color deselectedColour;
+    private Color deselectedColour = Color.white;
 
     private int startDir;
     private void Start()

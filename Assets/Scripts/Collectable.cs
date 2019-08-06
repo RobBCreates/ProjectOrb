@@ -31,12 +31,11 @@ public class Collectable : MonoBehaviour
     {
         Instantiate(explosion, gameObject.transform.position, Quaternion.identity);
         GameManager.Instance.PlayVibrate();
-        
-
     }
 
     void PlaySound()
     {
+        // Handled in AudioManager so that we can Destroy(gameObject).
         AudioManager.Instance.PlaySound(collectSound);
     }
 

@@ -15,7 +15,7 @@ public class GameCanvasManager : MonoBehaviour
    }
 
    [SerializeField]
-   Text endText; 
+   Text endText = null; 
 
    private void Awake()
    {
