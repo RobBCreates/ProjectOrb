@@ -33,21 +33,14 @@ public class PersistentManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Store for use so we can dynamically create level buttons from scenes using
-        // name convention W#L#
-        StoreAllScenesInBuild();
-
-        DontDestroyOnLoad(gameObject);
-    }
-
-    private void StoreAllScenesInBuild()
-    {
         int sceneCount = UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings;
 
-        for (int i = 0; i < sceneCount; i++)
+        for(int i = 0; i < sceneCount; i++)
         {
             scenes.Add(System.IO.Path.GetFileNameWithoutExtension(UnityEngine.SceneManagement.SceneUtility.GetScenePathByBuildIndex(i)));
+
         }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void SetPlaySound(bool newPlaySound)
@@ -77,10 +70,9 @@ public class PersistentManager : MonoBehaviour
 
     public void SetWorldAndLevel(string selectedName)
     {
-        // Get the second value of the scene name which will provide the chosen
-        // world. 
-        testChar = selectedName[1];
-        // Set the chosen world. 
+        string TestName = selectedName;
+
+        testChar = TestName[1];
         currentWorld = int.Parse(testChar.ToString()); 
           
     }
