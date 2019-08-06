@@ -27,6 +27,7 @@ public class LevelStartInputDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // get finger location and decide whether the player Orb will be moving left or right.
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
@@ -46,9 +47,7 @@ public class LevelStartInputDetector : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// OnMouseUp is called when the user has released the mouse button.
-    /// </summary>
+
     void OnMouseUp()
     {
         if(!GameManager.Instance.isPlaying)

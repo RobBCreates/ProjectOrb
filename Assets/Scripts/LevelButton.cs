@@ -11,6 +11,8 @@ public class LevelButton : MonoBehaviour
     {
         if(MainMenuManager.Instance)
         {
+            // Pass the name of the button to the Manager so it can deconstruct this for the World/Level info.
+            // Buttons should be spawned dynamically and named using the convention W#L#
             MainMenuManager.Instance.SetWorldAndLevel(gameObject.transform.name);
         }
         else

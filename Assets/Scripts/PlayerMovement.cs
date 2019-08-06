@@ -16,17 +16,11 @@ public class PlayerMovement : MonoBehaviour
     private int startDirection = 1;
     private int direction = -1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     public void SetStartDirection(int startDir)
     {
         startDirection = startDir;
-
-
+        
         if(startDir == 1)
         {
             gameObject.transform.rotation = Quaternion.Euler(0,0,90);
@@ -41,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Skip move input if we're on main menu.
         if(bMainMenuPlayer) 
         {
             transform.position += transform.up * Time.deltaTime * moveSpeed;
