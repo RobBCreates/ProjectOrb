@@ -1088,24 +1088,19 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1635260675702920263, guid: 60ebbfb299de29c44b74ec7d931de2dd,
+    - target: {fileID: 1635260676956401204, guid: 60ebbfb299de29c44b74ec7d931de2dd,
         type: 3}
-      propertyPath: endPanelObject
+      propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 791583493}
-    - target: {fileID: 6346490881308574929, guid: 60ebbfb299de29c44b74ec7d931de2dd,
+      objectReference: {fileID: 21300000, guid: 433eafdb9a2ea1647ac6f84fa425a0a1,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1635260676956401205, guid: 60ebbfb299de29c44b74ec7d931de2dd,
+        type: 3}
+      propertyPath: m_Transition
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60ebbfb299de29c44b74ec7d931de2dd, type: 3}
---- !u!1 &791583493 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6558591364227028025, guid: 60ebbfb299de29c44b74ec7d931de2dd,
-    type: 3}
-  m_PrefabInstance: {fileID: 791583492}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &889027601
 GameObject:
   m_ObjectHideFlags: 0
