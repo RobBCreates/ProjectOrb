@@ -78,8 +78,11 @@ public class GameManager : MonoBehaviour
         {
 
             Handheld.Vibrate();
+
+        }
 #endif
     }
 }
+
 
 
