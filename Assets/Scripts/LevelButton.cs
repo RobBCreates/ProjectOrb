@@ -8,10 +8,17 @@ public class LevelButton : MonoBehaviour
     [SerializeField]
     private Text nameText = null;
 
+    public string buttonName = "";
 
     private void Awake()
     {
-        nameText.text = gameObject.transform.name;
+        for(int i = 0; i < 2; i++)
+        {
+            char currentLetter = gameObject.transform.name[2 + i];
+            buttonName = buttonName + currentLetter.ToString();
+        }
+       
+        nameText.text = buttonName;
     }
 
 

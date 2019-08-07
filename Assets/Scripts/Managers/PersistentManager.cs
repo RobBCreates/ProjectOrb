@@ -13,6 +13,11 @@ public class PersistentManager : MonoBehaviour
         get { return _instance; }
     }
 
+    private int storedPlaySound = -1;
+    private int storedVibrate = -1;
+    private string storedPlaySoundName = "PlaySound";
+    private string storedVibrateName = "Vibrate";
+
     private bool bPlaySound;
     private bool bVibrate;
     public int currentWorld;
@@ -37,7 +42,28 @@ public class PersistentManager : MonoBehaviour
         // name convention W#L#
         StoreAllScenesInBuild();
         DontDestroyOnLoad(gameObject);
+
+
+
     }
+
+    public bool HasSaveFile()
+    {
+        // Check any of the potential stored save names as they should all be stored together so if we have one Key we should have them all. 
+        return PlayerPrefs.HasKey(storedPlaySoundName);
+    }
+
+    public void SaveSettings()
+    {
+        storedPlaySound = bPlaySound ? 1 : 0;
+        storedVibrate = bVibrate ? 1 : 0;
+
+        PlayerPrefs.SetInt(storedPlaySoundName, storedPlaySound);
+        PlayerPrefs.SetInt(storedVibrateName, storedVibrate);
+        Debug.Log(storedVibrate);
+    }
+
+   
 
     private void StoreAllScenesInBuild()
     {
@@ -56,16 +82,19 @@ public class PersistentManager : MonoBehaviour
 
     public bool GetPlaySound()
     {
+        bPlaySound = (PlayerPrefs.GetInt(storedPlaySoundName) == 1) ? true : false; 
         return bPlaySound;
     }
 
     public void SetVibrate(bool newVibrate)
     {
+     
         bVibrate = newVibrate;
     }
 
     public bool GetVibrate()
     {
+        bVibrate = (PlayerPrefs.GetInt(storedVibrateName) == 1) ? true : false;
         return bVibrate;
     }
 

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -13,15 +15,25 @@ public class MainMenuManager : MonoBehaviour
     }
 
     [SerializeField]
-    GameObject infoText = null;
+    GameObject canvasInfo = null;
     [SerializeField]
     GameObject settingsCanvas = null;
     [SerializeField]
-    GameObject levelButtonsCanvas = null;
+    GameObject canvasWorldLevels = null;
+    [SerializeField]
+    GameObject canvasWorld = null;
+    [SerializeField]
+    private Toggle soundToggle = null;
+    [SerializeField]
+    private Toggle vibrateToggle = null;
+    [SerializeField]
+    private GameObject playerObejct = null;
+    [SerializeField]
+    private List<GameObject> worldCanvasList = new List<GameObject>();
 
     private bool bPlaySound = true;
     private bool bPlayVibrate = true;
-    
+
     private void Awake()
     {
         if (!_instance)
@@ -37,15 +49,28 @@ public class MainMenuManager : MonoBehaviour
         {
             // Set player chosen settings through PersistentManager if it exists.
             // Which it ALWAYS should. 
-            PersistentManager.Instance.SetPlaySound(bPlaySound);
-            PersistentManager.Instance.SetVibrate(bPlayVibrate);
+            if (!PersistentManager.Instance.HasSaveFile())
+            {
+                // No Save file yet so create one now and default everything to true to match visuals in game on first load.
+                PersistentManager.Instance.SetPlaySound(bPlaySound);
+                PersistentManager.Instance.SetVibrate(bPlayVibrate);
+                // Default values stored so create our default save file.
+                PersistentManager.Instance.SaveSettings();                                
+            }
+            else
+            {
+                // Set toggle buttons to reflect the stored player preferences. 
+                soundToggle.isOn = PersistentManager.Instance.GetPlaySound();
+                vibrateToggle.isOn = PersistentManager.Instance.GetVibrate();
+            }
+          
         }
     }
 
     private void HideAllCanvas()
     {
-        levelButtonsCanvas.SetActive(false);
-        infoText.SetActive(false);
+        canvasWorldLevels.SetActive(false);
+        canvasInfo.SetActive(false);
         settingsCanvas.SetActive(false);
     }
 
@@ -66,17 +91,50 @@ public class MainMenuManager : MonoBehaviour
 
     public void ButtonPlayPressed()
     {
-        ManageCanvasObject(levelButtonsCanvas);
+        canvasWorldLevels.SetActive(true);
+        playerObejct.SetActive(false);
+    }
+
+    public void ButtonPressedCloseSpecificCanvas(GameObject canvas)
+    {
+        canvas.SetActive(false);
+        playerObejct.SetActive(true);
+    }
+
+    public void ButtonPressedCloseWorldCanvas()
+    {
+        if(canvasWorld.activeSelf == true)
+        {
+            canvasWorldLevels.SetActive(false);
+            playerObejct.SetActive(true);
+        }
+        else
+        {
+            foreach(GameObject can in worldCanvasList)
+            {
+                can.SetActive(false);
+            }
+            canvasWorld.SetActive(true);
+        }
+    }
+
+    public void ButtonPressedWorldSelected(int world)
+    {
+        canvasWorld.SetActive(false);
+        worldCanvasList[world - 1].SetActive(true);
     }
 
     public void ButtonInfoPressed()
     {
-        ManageCanvasObject(infoText);
+        //ManageCanvasObject(canvasInfo);
+        canvasInfo.SetActive(true);
+        playerObejct.SetActive(false);
     }
 
     public void ButtonSettingsPressed()
     {
         ManageCanvasObject(settingsCanvas);
+        playerObejct.SetActive(false);
     }
 
     public void ToggleSoundPressed(bool playSound)
@@ -84,6 +142,7 @@ public class MainMenuManager : MonoBehaviour
         if (PersistentManager.Instance)
         {
             PersistentManager.Instance.SetPlaySound(playSound);
+            PersistentManager.Instance.SaveSettings();
         }
         else
         {
@@ -95,6 +154,7 @@ public class MainMenuManager : MonoBehaviour
         if (PersistentManager.Instance)
         {
             PersistentManager.Instance.SetVibrate(vibrate);
+            PersistentManager.Instance.SaveSettings();
         }
         else
         {
